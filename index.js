@@ -20,24 +20,8 @@ d3.csv(
     };
   }
 ).then(function (rawData) {
-  // async function loadData() {
-  //   const data = await d3.csv("MER_T01_03.csv", (data) => {
-  //     data.forEach(function (d) {
-  //       d.date = d3.timeParse("%Y%m")(+d.YYYYMM);
-  //       d.value = +d.Value;
-  //       d.description = d.Description;
-  //     });
-  //   });
-  // }
-  // const data = loadData();
-
-  console.log(rawData);
-
   // Filter based on time period
   const data = rawData.filter((d) => d.period === "annual");
-
-  // console.log(d);
-  console.log(data);
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -89,16 +73,6 @@ d3.csv(
     .attr("transform", `translate(${marginLeft},0)`)
     .call(d3.axisLeft(y))
     .call((g) => g.select(".domain").remove())
-    // .call(
-    //   voronoi
-    //     ? () => {}
-    //     : (g) =>
-    //         g
-    //           .selectAll(".tick line")
-    //           .clone()
-    //           .attr("x2", width - marginLeft - marginRight)
-    //           .attr("stroke-opacity", 0.1)
-    // )
     .call((g) =>
       g
         .append("text")
@@ -111,8 +85,6 @@ d3.csv(
 
   // Compute the points in pixel space as [x, y, z], where z is the name of the series.
   const points = data.map((d) => [x(d.date), y(d.value), d.description]);
-
-  // console.log(points);
 
   // Group the points by series.
   const groups = d3.rollup(
@@ -150,7 +122,6 @@ d3.csv(
     .on("touchstart", (event) => event.preventDefault());
 
   return svg.node();
-  // svg.node();
 
   // When the pointer moves, find the closest point, update the interactive tip, and highlight
   // the corresponding line. Note: we don't actually use Voronoi here, since an exhaustive search
