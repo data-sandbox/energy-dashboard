@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vega@5"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vega-lite@5.14.1"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vega-embed@6"
+    ></script>
+  </head>
+  <body>
+    <h1>Example Dashboard Using Altair Plots</h1>
+
+    <div id="vis1"></div>
+
+    <script type="text/javascript">
+      const spec = "./altair1.json";
+      vegaEmbed("#vis1", spec)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+    </script>
+
+    <div id="vis2"></div>
+
+    <script type="text/javascript">
+      const spec2 = "./altair2.json";
+      vegaEmbed("#vis2", spec2)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+    </script>
+  </body>
+</html>
