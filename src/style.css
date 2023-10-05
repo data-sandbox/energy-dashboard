@@ -73,6 +73,7 @@ nav .primary ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   gap: 40px;
+  overflow: auto;
 }
 
 .card {
@@ -91,6 +92,15 @@ nav .primary ul {
 
 .plot {
   padding: 10px 20px;
+}
+
+.about {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+  max-width: min(100%, 600px);
 }
 
 footer {
