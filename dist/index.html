@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔋 Dashboard</title>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <div class="logo">
+          <h1>🔋 Dashboard</h1>
+        </div>
+        <div class="primary">
+          <ul>
+            <li>
+              <button id="overview" class="btn-nav overview">
+                Energy Overview
+              </button>
+            </li>
+            <li>
+              <button id="prices" class="btn-nav">Energy Prices</button>
+            </li>
+            <li>
+              <button id="renewables" class="btn-nav">Renewable Energy</button>
+            </li>
+            <li>
+              <button id="about" class="btn-nav">About</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="main" class="main"></div>
+      <footer>
+        <p>@data-sandbox</p>
+        <a
+          href="https://github.com/data-sandbox/energy-dashboard"
+          target="_blank"
+          ><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+            class="github"
+        /></a>
+      </footer>
+    </div>
+  </body>
+</html>

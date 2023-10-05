@@ -1,2 +1,5 @@
 node_modules
 venv
+src/data/api_test.ipynb
+src/data/.env
+src/data/__pycache__
