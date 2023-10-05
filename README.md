@@ -1,7 +1,7 @@
-# Energy Dashboard using D3
+# Energy Review Dashboard
 
-Web-based dashboard for US energy analysis. Built using [D3.js](https://d3js.org/) to create custom, interactive plots that utilize the power of web browsers.
+Interactive dashboard for US energy statistics updated monthly. Time series data is sourced from the [U.S. Energy Information Administration (EIA)](https://www.eia.gov/totalenergy/data/monthly/) using their REST API.
+
+Interactive plots are built using Python and the Altair plotting library. Dashboard is built using vanilla JavaScript, HTML, and CSS.
 
 👉 [Live Demo](https://data-sandbox.github.io/energy-dashboard/)
-
-Data sourced from the [U.S. Energy Information Administration.](https://www.eia.gov/totalenergy/data/monthly/)
