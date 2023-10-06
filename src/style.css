@@ -3,6 +3,7 @@
   --primary-light: rgb(226, 230, 237);
   --card-heading: rgb(250, 250, 252);
   --text-light: rgb(203, 215, 238);
+  --text-medium: rgb(146, 155, 171);
   --text-dark: rgb(60, 66, 81);
   --text-logo: rgb(58, 128, 238);
   --radius: 20px;
@@ -51,7 +52,11 @@ nav {
   width: 220px;
   text-align: left;
   padding: 20px 25px;
-  /* transition: transform 0.2s; */
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
 }
 
 nav .primary ul {
@@ -64,6 +69,10 @@ nav .primary ul {
 .btn-nav.active {
   background-color: var(--primary-light);
   color: var(--text-dark);
+}
+
+.primary {
+  flex-grow: 1;
 }
 
 .main {
@@ -104,10 +113,8 @@ nav .primary ul {
 }
 
 footer {
-  color: var(--text-dark);
-  background-color: var(--primary-light);
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
+  color: var(--text-medium);
+  background-color: var(--primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
