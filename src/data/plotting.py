@@ -23,48 +23,6 @@ def mark_chart(base):
     return points + lines
 
 
-def plot_overview_monthly(df):
-    base = alt.Chart(df).encode(
-        x=alt.X('period:T', axis=alt.Axis(
-            format="%Y %m", tickCount="month"), title='Month'),
-        y=alt.Y('value:Q', title='Energy Consumption (Trillion Btu)'),
-        color=alt.Color('seriesDescription:N', legend=None),
-        tooltip='seriesDescription:N',
-    )
-    return mark_chart(base)
-
-
-def plot_overview_annual(df):
-    base = alt.Chart(df).encode(
-        x=alt.X('period:T', title='Year'),
-        y=alt.Y('value:Q', title='Energy Consumption (Trillion Btu)'),
-        color=alt.Color('seriesDescription:N', legend=None),
-        tooltip='seriesDescription:N',
-    )
-    return mark_chart(base)
-
-
-def plot_prices_monthly(df):
-    base = alt.Chart(df).encode(
-        x=alt.X('period:T', axis=alt.Axis(
-            format="%Y %m", tickCount="month"), title='Month'),
-        y=alt.Y('value:Q', title='Cents per kWh (taxes included)'),
-        color=alt.Color('seriesDescription:N', legend=None),
-        tooltip='seriesDescription:N',
-    )
-    return mark_chart(base)
-
-
-def plot_prices_annual(df):
-    base = alt.Chart(df).encode(
-        x=alt.X('period:T', title='Year'),
-        y=alt.Y('value:Q', title='Cents per kWh (taxes included)'),
-        color=alt.Color('seriesDescription:N', legend=None),
-        tooltip='seriesDescription:N',
-    )
-    return mark_chart(base)
-
-
 def plot_monthly(df, title):
     base = alt.Chart(df).encode(
         x=alt.X('period:T', axis=alt.Axis(

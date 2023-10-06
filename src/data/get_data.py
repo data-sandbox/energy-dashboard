@@ -4,8 +4,7 @@ import pandas as pd
 from datetime import date
 from dateutil.relativedelta import relativedelta
 # TODO from typing import List, Optional, Tuple, Union
-from plotting import (plot_monthly, plot_annual, plot_overview_monthly, plot_overview_annual,
-                      plot_prices_monthly, plot_prices_annual)
+from plotting import plot_monthly, plot_annual
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -77,45 +76,23 @@ if __name__ == "__main__":
     shortTerm = 3
     longTerm = 20
 
-    # Overview
-    # Chart 1
-    frequency = 'monthly'
-    startDate = date.today() + relativedelta(years=-shortTerm)
+    # Consumption
+    chart_name = 'consumption'
     facets = ["CLTCBUS", "NNTCBUS", "PMTCBUS", "NUETBUS", "RETCBUS"]
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-{startDate.strftime('%m')}",
-              "offset": 0,
-              "length": 5000}
+    axis_title = 'Energy Consumption (Trillion Btu)'
+    create_chart(facets, frequency='monthly',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_overview_monthly(df)
-    # save_chart(chart, 'overview_monthly')
-
-    # Chart 2
-    frequency = 'annual'
-    startDate = date.today() + relativedelta(years=-longTerm)
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-01",
-              "offset": 0,
-              "length": 5000}
-
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_overview_annual(df)
-    # save_chart(chart, 'overview_annual')
+    create_chart(facets, frequency='annual',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
     # Production
+    chart_name = 'production'
     facets = ["REPRBUS", "BMPRBUS", "NUETBUS",
               "NLPRBUS", "PAPRBUS", "NGPRBUS", "CLPRBUS"]
     axis_title = 'Energy Production (Trillion Btu)'
-    chart_name = 'production'
     create_chart(facets, frequency='monthly',
                  axis_title=axis_title,
                  chart_name=chart_name)
@@ -125,103 +102,39 @@ if __name__ == "__main__":
                  chart_name=chart_name)
 
     # Energy Prices
-    # Monthly, Electricity
-    frequency = 'monthly'
-    startDate = date.today() + relativedelta(years=-shortTerm)
+    # Electricity
+    chart_name = 'prices'
     facets = ["ESRCUUS", "ESCMUUS", "ESICUUS", "ESACUUS", "ESOTUUS"]
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-{startDate.strftime('%m')}",
-              "offset": 0,
-              "length": 5000}
+    axis_title = 'Cents per kWh (taxes included)'
+    create_chart(facets, frequency='monthly',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_prices_monthly(df)
-    # save_chart(chart, 'prices_monthly')
+    create_chart(facets, frequency='annual',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
-    # Annual, Electricity
-    frequency = 'annual'
-    startDate = date.today() + relativedelta(years=-longTerm)
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-01",
-              "offset": 0,
-              "length": 5000}
-
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_prices_annual(df)
-    # save_chart(chart, 'prices_annual')
-
-    # Monthly, Gas
-    frequency = 'monthly'
-    startDate = date.today() + relativedelta(years=-shortTerm)
+    # Gas
+    chart_name = 'gas'
     facets = ["RUUCUUS", "PUUCUUS", "DFONUUS"]
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-{startDate.strftime('%m')}",
-              "offset": 0,
-              "length": 5000}
+    axis_title = 'Dollars per Gallon (taxes included)'
+    create_chart(facets, frequency='monthly',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_monthly(df, 'Dollars per Gallon (taxes included)')
-    # save_chart(chart, 'gas_monthly')
-
-    # Annual, Gas
-    frequency = 'annual'
-    startDate = date.today() + relativedelta(years=-longTerm)
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-01",
-              "offset": 0,
-              "length": 5000}
-
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_annual(df, 'Dollars per Gallon (taxes included)')
-    # save_chart(chart, 'gas_annual')
+    create_chart(facets, frequency='annual',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
     # Renewables
-    # Monthly
-    frequency = 'monthly'
-    startDate = date.today() + relativedelta(years=-shortTerm)
+    chart_name = 'renewables'
     facets = ["HVTCBUS", "GETCBUS", "SOTCBUS", "WYTCBUS",
               "WDTCBUS", "WSTCBUS", "BFTCBUS", "BMTCBUS"]
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-{startDate.strftime('%m')}",
-              "offset": 0,
-              "length": 5000}
+    axis_title = 'Energy Consumption (Trillion Btu)'
+    create_chart(facets, frequency='monthly',
+                 axis_title=axis_title,
+                 chart_name=chart_name)
 
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_monthly(df, 'Energy Consumption (Trillion Btu)')
-    # save_chart(chart, 'renewables_monthly')
-
-    # Annual
-    frequency = 'annual'
-    startDate = date.today() + relativedelta(years=-longTerm)
-    params = {'api_key': token,
-              'frequency': frequency,
-              "data[0]": ["value"],
-              "facets[msn][]": facets,
-              "start": f"{startDate.year}-01",
-              "offset": 0,
-              "length": 5000}
-
-    # response = query_api(url, params)
-    # df = create_df(response, frequency)
-    # chart = plot_annual(df, 'Energy Consumption (Trillion Btu)')
-    # save_chart(chart, 'renewables_annual')
+    create_chart(facets, frequency='annual',
+                 axis_title=axis_title,
+                 chart_name=chart_name)

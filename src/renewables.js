@@ -8,13 +8,13 @@ async function embedPlots() {
     width: 500,
     height: 300,
   };
-  // const opt2 = {
-  //   width: opt1.width - 5,
-  //   height: opt1.height,
-  // };
+  const opt2 = {
+    width: opt1.width - 5,
+    height: opt1.height,
+  };
 
   await embed("#plot1", renewablesMonthly, opt1);
-  await embed("#plot2", renewablesAnnual, opt1);
+  await embed("#plot2", renewablesAnnual, opt2);
 }
 
 function loadRenewables() {
